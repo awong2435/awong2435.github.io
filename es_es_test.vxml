@@ -1,11 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml">
-  <form>
-    <block>
-      <prompt xml:lang="es-ES">
-        <voice>Hola. Esta es la voz predeterminada en español.</voice>
-      </prompt>
-      <disconnect/>
-    </block>
-  </form>
+<?xml version="1.0"?>
+<vxml version="2.0" xml:lang="en-US">
+    <catch event="error.badfetch">
+        <prompt bargein="false">
+            <voice name="Samantha">
+                <prosody rate="-8%">
+                    Welcome to the Ministry of Natural Resources Electronic Licensing System.
+                    This system is temporarily unavailable due to routine maintenance.
+                    Please try again later. 
+                </prosody>
+            </voice>
+            <speak xml:lang="fr-fr">
+                <voice name="Virginie">
+                    <prosody rate="-8%">
+                        Bienvenue au systÃ¨me Ã©lectronique des permis du ministÃ¨re des Richesses naturelles.
+                        Le systÃ¨me est fermÃ© temporairement pour raisons dâ€™entretien.
+                        Veuillez rappeler plus tard.
+                    </prosody>
+                </voice>
+            </speak>
+        </prompt>
+    </catch>
+    <catch>
+        <prompt bargein="false">
+            <voice name="Samantha">
+                <prosody rate="-8%">
+                    The system is temporarily unavailable.  Please call again later. 
+                </prosody>
+            </voice>
+            <speak xml:lang="fr-fr">
+                <voice name="Virginie">
+                    <prosody rate="-8%">
+                        Le systÃ¨me est fermÃ© temporairement.
+                        Veuillez rappeler plus tard.
+                    </prosody>
+                </voice>
+            </speak>
+        </prompt>
+    </catch>
+    <form id="form_start">
+        <block name="block_service_up">
+            <if cond="session.telephone.dnis==16152089721">
+                <goto next="https://ont-ivr-qa.s3licensing.com/default.aspx"/>
+            <elseif cond="session.telephone.dnis==16159539593"/>
+                <goto next="https://onlasrvoice-ua.azurewebsites.net/default.aspx"/>
+            <elseif cond="session.telephone.dnis==7052427384"/>
+                <goto next="https://onlasrvoice.azurewebsites.net/default.aspx"/>
+            <elseif cond="session.telephone.dnis==6292366317"/>
+                <goto next="https://sprintonlasrvoice-qa.azurewebsites.net/default.aspx"/>
+            <elseif cond="session.telephone.dnis==6292366318"/>
+                <goto next="https://sprintonlasrvoice-uat.azurewebsites.net/default.aspx"/>
+            </if>
+        </block>
+    </form>
 </vxml>
