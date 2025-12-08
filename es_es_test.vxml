@@ -3,8 +3,8 @@
  <form>
   <block>
    <prompt>
-    <speak xml:lang="es-MX">
-    <voice name="Mia" variant="1">
+    <speak xml:lang="en-US">
+    <voice name="Tom">
      Hello, thank you for calling Plum Voice.
     </voice>
     </speak>
